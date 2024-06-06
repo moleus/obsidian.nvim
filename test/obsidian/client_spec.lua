@@ -13,7 +13,7 @@ local with_tmp_client = function(run)
   client.opts.note_id_func = function(title)
     local id = ""
     if title ~= nil then
-      id = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+      id = title:gsub(" ", "-"):gsub("[^%a0-9-]", ""):lower()
     else
       for _ = 1, 4 do
         id = id .. string.char(math.random(65, 90))

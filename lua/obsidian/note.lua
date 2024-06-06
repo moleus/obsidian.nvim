@@ -15,7 +15,7 @@ local SKIP_UPDATING_FRONTMATTER = { "README.md", "CONTRIBUTING.md", "CHANGELOG.m
 
 local DEFAULT_MAX_LINES = 500
 
-local CODE_BLOCK_PATTERN = "^%s*```[%w_-]*$"
+local CODE_BLOCK_PATTERN = "^%s*```[%a_-]*$"
 
 ---@class obsidian.note.HeaderAnchor
 ---

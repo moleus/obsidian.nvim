@@ -55,7 +55,7 @@ M.get_keyword_pattern = function()
   -- The enclosing [=[ ... ]=] is just a way to mark the boundary of a
   -- string in Lua.
   -- return [=[\%(^\|[^#]\)\zs#[a-zA-Z0-9_/-]\+]=]
-  return "#[%s0-9_/-]\\+"
+  return "#[%a0-9_/-]\\+"
 end
 
 return M

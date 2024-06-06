@@ -82,7 +82,7 @@ end
 ---@return string[]
 M.complete_args_search = function(client, _, cmd_line, _)
   local query
-  local cmd_arg, _ = util.lstrip_whitespace(string.gsub(cmd_line, "^.*Obsidian[A-Za-z0-9]+", ""))
+  local cmd_arg, _ = util.lstrip_whitespace(string.gsub(cmd_line, "^.*Obsidian[%a0-9]+", ""))
   if string.len(cmd_arg) > 0 then
     if string.find(cmd_arg, "|", 1, true) then
       return {}

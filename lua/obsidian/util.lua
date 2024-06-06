@@ -1116,9 +1116,9 @@ util.get_icon = function(path)
 end
 
 -- We are very loose here because obsidian allows pretty much anything
-util.ANCHOR_LINK_PATTERN = "#[%a%d][^#]*"
+util.ANCHOR_LINK_PATTERN = "#[%w\128-\255%d][^#]*"
 
-util.BLOCK_PATTERN = "%^[%a%d][%a%d-]*"
+util.BLOCK_PATTERN = "%^[%w\128-\255%d][%w\128-\255%d-]*"
 
 util.BLOCK_LINK_PATTERN = "#" .. util.BLOCK_PATTERN
 
@@ -1183,7 +1183,7 @@ end
 ---@param line string
 ---@return boolean
 util.is_header = function(line)
-  if string.match(line, "^#+%s+[%a]+") then
+  if string.match(line, "^#+%s+[%w\128-\255]+") then
     return true
   else
     return false
@@ -1194,7 +1194,7 @@ end
 ---@param line string
 ---@return integer
 util.header_level = function(line)
-  local headers, match_count = string.gsub(line, "^(#+)%s+[%a]+.*", "%1")
+  local headers, match_count = string.gsub(line, "^(#+)%s+[%w\128-\255]+.*", "%1")
   if match_count > 0 then
     return string.len(headers)
   else
@@ -1229,7 +1229,7 @@ util.standardize_anchor = function(anchor)
   -- Replace whitespace with "-".
   anchor = string.gsub(anchor, "%s", "-")
   -- Remove every non-alphanumeric character.
-  anchor = string.gsub(anchor, "[^#%a_-]", "")
+  anchor = string.gsub(anchor, "[^#%w\128-\255_-]", "")
   return anchor
 end
 

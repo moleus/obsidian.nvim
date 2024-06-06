@@ -30,9 +30,9 @@ M.RefTypes = {
 ---@enum obsidian.search.Patterns
 M.Patterns = {
   -- Tags
-  TagCharsOptional = "[%a0-9_/-]*",
-  TagCharsRequired = "[%a]+[%a0-9_/-]*[%a0-9]+", -- assumes tag is at least 2 chars
-  Tag = "#[%a]+[%a0-9_/-]*[%a0-9]+",
+  TagCharsOptional = "[%w\128-\2550-9_/-]*",
+  TagCharsRequired = "[%w\128-\255]+[%w\128-\2550-9_/-]*[%w\128-\2550-9]+", -- assumes tag is at least 2 chars
+  Tag = "#[%w\128-\255]+[%w\128-\2550-9_/-]*[%w\128-\2550-9]+",
 
   -- Miscellaneous
   Highlight = "==[^=]+==", -- ==text==

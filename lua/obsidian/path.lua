@@ -181,7 +181,7 @@ Path.new = function(...)
   -- On Windows, normalize 'c:/' to 'C:/'
   if
     (util.get_os() == util.OSType.Windows or util.get_os() == util.OSType.Wsl)
-    and string.match(self.filename, "^[%a]:/.*$")
+    and string.match(self.filename, "^[%w\128-\255]:/.*$")
   then
     self.filename = string.upper(string.sub(self.filename, 1, 1)) .. string.sub(self.filename, 2)
   end
@@ -271,7 +271,7 @@ Path.is_absolute = function(self)
     vim.startswith(self.filename, "/")
     or (
       (util.get_os() == util.OSType.Windows or util.get_os() == util.OSType.Wsl)
-      and string.match(self.filename, "^[%a]:/.*$")
+      and string.match(self.filename, "^[%w\128-\255]:/.*$")
     )
   then
     return true
